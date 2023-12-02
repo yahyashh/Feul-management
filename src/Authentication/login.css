@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&display=swap');
+
+* {
+    box-sizing: border-box;
+    line-height: 1;
+}
+
+body,
+html {
+    height: 100vh;
+    width: 100%;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.bg-custom {
+    font-family: 'Nunito Sans', sans-serif;
+    padding-top: 2rem;
+    background-color: #116a7b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0rem 5rem;
+}
+
+h1,
+h3,
+h2 {
+    font-weight: 600;
+}
+
+input:focus {
+    border-radius: 4px;
+    outline: 2px solid #116a7b;
+}
+
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+    --bs-gutter-x: 0rem;
+}
+
+.loginPadding {
+    padding: 0vw 13vw;
+}
+
+.text-div p {
+    font-size: small;
+}
+
+.text-div h2 {
+    letter-spacing: -1px;
+}
+
+.inplogcol {
+    background-color: #D9D9D9;
+    border: 1px solid #D9D9D9;
+}
+
+.loginbtn,
+.submitbtn {
+    border-radius: 4px;
+    padding: .8rem;
+    border: 2px solid #116a7b;
+    background-color: inherit;
+
+}
+
+.createbtn,
+.forgetbtn {
+    outline: none;
+    border: none;
+    background-color: inherit;
+}
+
+
+input {
+    border-radius: 4px;
+}
+
+.policy p {
+    font-size: 0.9rem;
+
+}
+
+/* forget password */
+.custom-underline-offset {
+    text-underline-offset: 2px;
+}
+
+@media only screen and (min-width: 768px) {
+    .loginPadding {
+        padding: 0vw 5vw;
+    }
+}
+
+
+@media only screen and (min-width: 1000px) {
+    .loginPadding {
+        padding: 0vw 9vw;
+    }
+
+
+}
+
+@media only screen and (max-width: 425px) {
+    .bg-custom {
+        display: none;
+    }
+
+    .loginPadding {
+        padding: 0vw 9vw;
+    }
+}
