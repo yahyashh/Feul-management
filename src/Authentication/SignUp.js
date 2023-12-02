@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Image from "../assets/undraw_navigator_a479 3.png"
 
-const SignUp = ({login, setLogin}) => {
-const [name, setName] = useState("")
-const [emial, setEmail] = useState("")
-const [password, setPassword] = useState("")
-const [confirmPassword, setConfirmPassword] = useState("")
+// const SignUp = ({ login, setLogin }) => {
+//   const [name, setName] = useState("")
+//   const [emial, setEmail] = useState("")
+//   const [password, setPassword] = useState("")
+//   const [confirmPassword, setConfirmPassword] = useState("")
 
-const history = useHistory()
+//   const history = useHistory()
 
 const handleSubmit = (e)=>{
     e.preventDefault()
@@ -94,4 +94,4 @@ const handleSubmit = (e)=>{
   )
 }
 
-export default SignUp
+// export default SignUp

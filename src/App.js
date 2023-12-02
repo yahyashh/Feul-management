@@ -6,9 +6,11 @@ import { Route } from "react-router-dom";
 function App() {
   return (
     <div>
-      <Route path="/" component={Authentication} exact/>
-      <Route path="/user" component={UserPage}/>
-      <Route path="/admin" component={AdminPage}/>
+      <Route path="/" component={Authentication} exact />
+
+      <Route path="/user" component={UserPage} />
+
+      <Route path="/admin" component={AdminPage} />
     </div>
   );
 }
