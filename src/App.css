@@ -1,0 +1,19 @@
+:root {
+  --bluecolor: #116A7B;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Gilroy-Medium;
+}
+
+
+@font-face {
+  font-family: Gilroy-Medium;
+  src: url('./Asserts/fonts/Gilroy/Gilroy-Medium.ttf');
+}
