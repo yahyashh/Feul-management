@@ -15,7 +15,6 @@ export default function CreateUser() {
   const [age, setAge] = useState("");
   const [skill, setSkill] = useState("");
   const [experience, setExperience] = useState("");
-  // const [image, setImage] = useState(null);
 
   const createuser = {
     emailPhone,
