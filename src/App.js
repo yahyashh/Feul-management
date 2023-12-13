@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -33,6 +34,22 @@ function App() {
 
 
     </>
+=======
+import Authentication from "./pages/Authentication";
+import UserPage from "./pages/UserPage";
+import AdminPage from "./pages/AdminPage";
+import { Route } from "react-router-dom";
+
+function App() {
+  return (
+    <div>
+      <Route path="/" component={Authentication} exact />
+
+      <Route path="/user" component={UserPage} />
+
+      <Route path="/admin" component={AdminPage} />
+    </div>
+>>>>>>> 5a730030d3d06188c9419ded8ad4b7c330a1f51d
   );
 }
 
