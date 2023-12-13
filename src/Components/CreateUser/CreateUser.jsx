@@ -15,62 +15,61 @@ export default function CreateUser() {
   const [age, setAge] = useState("");
   const [skill, setSkill] = useState("");
   const [experience, setExperience] = useState("");
-  // const [image, setImage] = useState(null);
+  const [image, setImage] = useState(null);
 
-  const createuser = {
-    emailPhone,
-    name,
-    age,
-    skill,
-    experience,
-    location,
-  };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5000/login", createuser)
-      .then((res) => {
-        alert("success");
-      })
-      .catch((err) => {
-        alert("error" + err);
-      });
 
+    if (
+      name === "" ||
+      location === "" ||
+      age === "" ||
+      emailPhone === "" ||
+      skill === "" ||
+      experience === "" ||
+      image === null
+    ) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    const createUser = {
+      emailPhone,
+      name,
+      age,
+      skill,
+      experience,
+      location,
+      image,
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/login",
+        createUser
+      );
+
+      console.log("Server response:", response.data);
+      alert("Success");
+    } catch (error) {
+      console.error("Error creating user:", error);
+      alert("Error creating user");
+    }
+
+    // Reset form fields
     setEmailPhone("");
     setName("");
     setAge("");
     setSkill("");
     setExperience("");
     setLocation("");
-  };
-
-  const [formData, setFormData] = useState({
-    name: "",
-    location: "",
-    age: "",
-    emailPhone: "",
-    skill: "",
-    experience: "",
-    image: null,
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setImage(null);
   };
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
-    setFormData({ ...formData, image: file });
+    setImage(file);
   };
-
-  // Check if all fields are filled
-  const isFormValid = Object.values(formData).every((value) => value !== "");
-
-  if (isFormValid) {
-    // TODO: Add logic to submit the form data (e.g., send it to an API)
-    console.log("Form submitted:", formData);
-  }
 
   return (
     <>
@@ -90,10 +89,10 @@ export default function CreateUser() {
             <div className="col-md-5 ">
               <div className="galleryimages">
                 {/* Display the selected image */}
-                {formData.image ? (
+                {image ? (
                   <img
                     className="selected-image"
-                    src={URL.createObjectURL(formData.image)}
+                    src={URL.createObjectURL(image)}
                     alt="Selected"
                   />
                 ) : (
@@ -133,6 +132,7 @@ export default function CreateUser() {
 
                 <form onSubmit={handleSubmit}>
                   <div className="d-flex flex-wrap mt-5  gap-4 align-items-md-center justify-content-center ">
+                    {/* Form inputs */}
                     {/* First Line */}
                     <div className="d-flex flex-column gap-2 inp col-md-4">
                       <label htmlFor="">Name:</label>
@@ -141,7 +141,7 @@ export default function CreateUser() {
                         className="p-2 custom-width custom-border "
                         type="text"
                         placeholder="Joi Beddan"
-                        onChange={handleInputChange}
+                        onChange={(e) => setName(e.target.value)}
                       />
                     </div>
 
@@ -152,7 +152,7 @@ export default function CreateUser() {
                         className="p-2 custom-width custom-border "
                         type="text"
                         placeholder="United Kingdom"
-                        onChange={handleInputChange}
+                        onChange={(e) => setLocation(e.target.value)}
                       />
                     </div>
 
@@ -164,7 +164,7 @@ export default function CreateUser() {
                         className="p-2 custom-width custom-border "
                         type="text"
                         placeholder="41years"
-                        onChange={handleInputChange}
+                        onChange={(e) => setAge(e.target.value)}
                       />
                     </div>
 
@@ -176,7 +176,7 @@ export default function CreateUser() {
                         className="p-2 custom-border "
                         type="text"
                         placeholder="Abc@gmail.com | +92 3048236344"
-                        onChange={handleInputChange}
+                        onChange={(e) => setEmailPhone(e.target.value)}
                       />
                     </div>
 
@@ -188,7 +188,7 @@ export default function CreateUser() {
                         className="p-2 custom-width custom-border "
                         type="text"
                         placeholder="Driver"
-                        onChange={handleInputChange}
+                        onChange={(e) => setSkill(e.target.value)}
                       />
                     </div>
 
@@ -200,9 +200,10 @@ export default function CreateUser() {
                         className="p-2 custom-width custom-border "
                         type="text"
                         placeholder="6 Year"
-                        onChange={handleInputChange}
+                        onChange={(e) => setExperience(e.target.value)}
                       />
                     </div>
+
                     <div className="d-flex flex-column gap-2 inp col-md-4">
                       <div className="submitbutton2">
                         <button type="submit" className="submitbtn2">
