@@ -2,42 +2,68 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import './login.css';
 import { ForgetPassword } from './ForgetPassword';
+import axios from "axios"
+import { FuelState } from '../context/FeulProvider';
 
-const Login = ({ login, setLogin }) => {
-  const [emial, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+const Login = ({login, setLogin}) => {
+  // const [email, setEmail] = useState("")
+  // const [password, setPassword] = useState("")
   const [restPassword, setRestPassword] = useState(true)
+  const {isLogin, setIsLogin} = FuelState()
+
+  const [loginData, setLoginData] = useState({
+    email: '',
+    password: '',
+  });
   // const [restPassword, setRestPassword] = useState(false)
   const history = useHistory()
   const [user, setUser] = useState('user');
 
+  const handleInputChange = (e) => {
+    setLoginData({
+      ...loginData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (!emial.trim() || !password.trim()) {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const response = await axios.post('http://localhost:5000/api/login', loginData);
+      console.log(response.data.user);
+  console.log(response.data.user.isAdmin);
 
-      alert('Please fill in both email and password fields.');
-      return " "
-    }
+  const { token, user } = response.data;
 
-    setEmail('');
-    setPassword('');
+  // Store the token and user data in localStorage or wherever needed
+  localStorage.setItem('token', token);
+  localStorage.setItem('user', JSON.stringify(user));
 
-    if (user === "user") {
-      history.push("/user")
+  setIsLogin(true)
+  // Log the token and user data to the console
+  console.log('Token:', token);
+  console.log('User Data:', user);
+      if (user.isAdmin === 'client') {
+        history.push("/user")
+        alert("client login")
+      }else{
+        history.push("/admin")
+        alert("admain login")
+      }
+  
+    } catch (error) {
+      alert(error.response.data.error)
+      console.error('Error during login:', error.response.data.error);
+      // Handle other errors, display a message, or redirect as needed
     }
-    else if (user === "admin") {
-      history.push("/admin")
-    }
-    else {
-      alert("is not working")
-    }
-  }
+  };
+
   const handleRadioChange = (event) => {
     setUser(event.target.value);
   };
   return (
-    restPassword ? <LoginPage setEmail={setEmail} setPassword={setPassword} setRestPassword={setRestPassword} login={login} setLogin={setLogin} handleSubmit={handleSubmit} restPassword={restPassword} user={user} handleRadioChange={handleRadioChange} /> :
+    restPassword ? <LoginPage handleInputChange={handleInputChange} setRestPassword={setRestPassword} login={login} setLogin={setLogin} handleSubmit={handleSubmit} restPassword={restPassword} user={user} handleRadioChange={handleRadioChange} /> :
       <ForgetPassword />
   )
 }
@@ -45,7 +71,7 @@ export default Login
 
 
 
-function LoginPage({ restPassword, handleSubmit, setRestPassword, setEmail, setPassword, login, setLogin, user, handleRadioChange }) {
+function LoginPage({ restPassword, handleSubmit, setRestPassword, handleInputChange, setPassword, login, setLogin, user, handleRadioChange }) {
   return (<div className="container-fluid row  w-100 vh-100 ">
     <div className='col-12 col-sm-12 col-md-6 col-lg-6 bg-custom '>
       <div className="text-center text-white pt-5">
@@ -64,12 +90,12 @@ function LoginPage({ restPassword, handleSubmit, setRestPassword, setEmail, setP
           <p className='text-secondary pt-2 ' >Log in with your data that you entered during in your registration.</p>
         </div>
         <div className="d-flex flex-column gap-2 inp">
-          <label htmlFor="">UserName</label>
-          <input className='p-2 inplogcol' type="text" onChange={(e) => setEmail(e.target.value)} />
+          <label htmlFor="">Email</label>
+          <input className='p-2 inplogcol' type="email" name="email" onChange={handleInputChange} />
         </div>
         <div className="d-flex flex-column gap-2 inp">
           <label htmlFor="">Password</label>
-          <input className='p-2 inplogcol  ' type="password" onChange={(e) => setPassword(e.target.value)} />
+          <input className='p-2 inplogcol' type="password" name="password" onChange={handleInputChange} />
         </div>
         <div className="d-flex justify-content-end align-items-center pt-2 pb-2">
           <button className='m-0 text-decoration-underline custom-underline-offset forgetbtn cursor-pointer' onClick={() => setRestPassword(!restPassword)}>Forget Password</button>

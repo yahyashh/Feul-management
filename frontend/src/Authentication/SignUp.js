@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Image from "../assets/undraw_navigator_a479 3.png"
 
-const SignUp = ({ login, setLogin }) => {
+const SignUp = ({login, setLogin}) => {
   const [name, setName] = useState("")
   const [emial, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -85,7 +85,7 @@ const handleSubmit = (e)=>{
         <input type="email" className="form-control rounded-md border-2" id="exampleInputEmail1" aria-describedby="emailHelp" style={{borderColor: "#11687b"}}/>
         </div>
         <div className='flex justify-center items-center mt-2'>
-         <button className=' text-white text-base px-3 py-1 rounded-2xl w-20'type='submit' style={{backgroundColor:"#11687b"}}>Submit</button>
+         <button className=' text-white text-base px-3 lg:px-4 py-1 rounded-2xl w-20'type='submit' style={{backgroundColor:"#11687b"}}>Submit</button>
         </div>
          </form>
         </div>
@@ -94,4 +94,4 @@ const handleSubmit = (e)=>{
   )
 }
 
-// export default SignUp
+export default SignUp

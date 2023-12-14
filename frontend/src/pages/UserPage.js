@@ -8,12 +8,12 @@ import { useDisclosure } from "@chakra-ui/react"
 const UserPage = () => {
 
   return (
-    <div className='font-nunito h-screen w-screen'>
+    <div className='font-nunito h-screen w-screen select-none'>
 
       <nav className='flex justify-between h-16 w-full' style={{backgroundColor: "#11687b"}}>
         <div className='pl-10 md:pl-14 flex items-center gap-1 md:gap-2'>
           <img src={gas} className='w-7 h-7'/>
-          <h1 className='font-bold w-24 md:w-32 md:text-base text-sm text-center text-white '>Fleeto Product Company</h1>
+          <h1 className='font-bold w-24 md:w-32 md:text-base text-sm text-center text-white'>Fleeto Product Company</h1>
         </div>
 
         <div className='flex items-center gap-3 pr-5'>
@@ -26,7 +26,7 @@ const UserPage = () => {
       
       <div className='flex justify-center items-center h-4/5'>
         <div className='w-8/12 md:w-2/5'>
-          <h1 className='text-black text-4xl font-bold w-64 pb-2 md:pb-5 pt-3 md:pt-0'>Fleeto Product <div className='text-cyan-700'>Company</div></h1>
+          <h1 className='text-black text-4xl font-bold w-64 pb-2 md:pb-5 pt-3 md:pt-0 '>Fleeto Product <div className='text-cyan-700'>Company</div></h1>
           <p className='w- text-base md:text-xl xl:text-3xl py-3 md:pb-5 xl:pb-10'>Harness feelex fuel mentoring sensors I <span className='text-cyan-700'>stoping fuel pilferage/Fuel</span> effciency by idling and save huge on fuel cost.</p>
         <button className='mt-3 py-2 px-4 text-white rounded-3xl' style={{backgroundColor: "#11687b"}}>Add record</button>
         </div>

@@ -19,14 +19,19 @@ import {
   import cnicImg from "../../assets/user/cnic.png"
   import contactImg from "../../assets/user/contact.png"
   import emailImg from "../../assets/user/email.png"
-
+  import { useHistory } from 'react-router-dom'
   import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FuelState } from '../../context/FeulProvider'
   
 
 
 const UserModal = ({children}) => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
-
+    const { isOpen, onOpen, onClose } = useDisclosure() 
+    const {isLogin, setIsLogin} = FuelState()
+    const history =useHistory()
+    const logoutHandler = ()=>{
+      setIsLogin(false)
+    }
   
     return (
       <>
@@ -95,7 +100,7 @@ const UserModal = ({children}) => {
             </ModalBody>
   
             <ModalFooter display={'flex'} justifyContent={'center'} alignItems={'center'}>
-            <button className='py-2 px-8 text-white rounded-3xl font-bold' style={{backgroundColor: "#11687b"}}>
+            <button className='py-2 px-8 text-white rounded-3xl font-bold' onClick={logoutHandler} style={{backgroundColor: "#11687b"}}>
               Logout
             </button>
             </ModalFooter>
