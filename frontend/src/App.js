@@ -1,5 +1,3 @@
-
-
 import Authentication from "./pages/Authentication";
 import UserPage from "./pages/UserPage";
 import AdminPage from "./pages/AdminPage";
@@ -15,7 +13,6 @@ function App() {
 
       <ProtectedRoute path="/admin" component={AdminPage} />
     </div>
-
   );
 }
 
