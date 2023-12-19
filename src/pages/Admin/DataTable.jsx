@@ -18,13 +18,13 @@ const DataTable = () => {
     ];
 
     return (
-        <div className="container w-100">
-            <div className="row justify-content-center">
+        <div className="overflow-scroll">
+            <div className="row justify-content-center  widthtable ">
                 <div className="col-md-12">
-                    <table className="table table-hover text-start ">
+                    <table className="table table-hover text-start  table-container ">
                         <thead>
                             <tr>
-                                <th scope="col">Name</th>
+                                <th scope="col">name</th>
                                 <th scope="col">Vehicle Name</th>
                                 <th scope="col">Time</th>
                                 <th scope="col">Usage</th>

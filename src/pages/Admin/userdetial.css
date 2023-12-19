@@ -1,0 +1,27 @@
+.customtable {
+    overflow-y: scroll;
+}
+
+.cccc {
+    height: 70vh;
+    overflow-y: scroll !important;
+}
+
+.singleuserdetials {
+    height: 80vh !important;
+}
+
+.usernameimage {
+    padding-top: .4rem;
+    padding-bottom: 1rem;
+    padding-left: .9rem;
+}
+
+.dataiamgelast {
+    width: 25px;
+    height: 25px;
+}
+
+.pdondate {
+    padding: 10px 0px 10px 16px !important;
+}

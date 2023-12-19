@@ -1,7 +1,25 @@
 .Siderbar {
     background-color: #116a7b;
-    width: 260px;
+    width: 270px;
+    /* position: fixed; */
     color: white;
+}
+
+.Sidebar {
+    background-color: #116a7b;
+    /* position: fixed; */
+    width: 70px;
+    padding-left: 0px;
+    color: white;
+}
+
+.Siderbar,
+.Sidebar>img {
+    cursor: pointer;
+}
+
+img.cursor-pointer {
+    cursor: pointer;
 }
 
 .bg-logo {
@@ -14,10 +32,29 @@
 }
 
 .gaps {
-    padding-left: 10px;
+    /* padding-left: 10px; */
     gap: 6rem;
 }
 
 .siderbargap {
     gap: 2rem;
+}
+
+
+@media screen and (max-width: 500px) {
+    .Siderbar {
+        background-color: #116a7b;
+        position: fixed;
+        width: 70%;
+        z-index: 5;
+        color: white;
+    }
+
+    .Sidebar {
+        position: fixed;
+        background-color: #116a7b;
+        width: 70px;
+        padding-left: 0px;
+        color: white;
+    }
 }

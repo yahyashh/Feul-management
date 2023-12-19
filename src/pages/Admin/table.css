@@ -10,12 +10,39 @@ th {
 }
 
 .container {
-    border: 1px solid red;
     height: 60%;
+    margin: 0px;
     overflow-y: scroll;
 }
 
 .row {
-    --bs-gutter-x: 0rem;
-    --bs-gutter-y: 0;
+    --bs-gutter-x: 0rem !important;
+    --bs-gutter-y: 0 !important;
+}
+
+/* For Firefox */
+table {
+    scrollbar-width: thin;
+    scrollbar-color: #888 transparent;
+}
+
+@media screen and (max-width: 786px) {
+    .widthtable {
+        overflow-x: scroll;
+        width: 110%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .widthtable {
+        overflow-x: scroll;
+        width: 140%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .widthtable {
+        overflow-x: scroll;
+        width: 180%;
+    }
 }

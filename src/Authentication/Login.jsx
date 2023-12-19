@@ -63,11 +63,11 @@ function LoginPage({ restPassword, handleSubmit, setRestPassword, setEmail, setP
           <h2 style={{ fontSize: 'calc(1rem + 0.9vw)' }} >Hello! Welcome back !</h2>
           <p className='text-secondary pt-2 ' >Log in with your data that you entered during in your registration.</p>
         </div>
-        <div className="d-flex flex-column gap-2 inp">
+        <div className="d-flex flex-column gap-2 ">
           <label htmlFor="">UserName</label>
           <input className='p-2 inplogcol ' type="text" onChange={(e) => setEmail(e.target.value)} />
         </div>
-        <div className="d-flex flex-column gap-2 inp">
+        <div className="d-flex flex-column gap-2 mt-2">
           <label htmlFor="">Password</label>
           <input className='p-2 inplogcol  ' type="password" onChange={(e) => setPassword(e.target.value)} />
         </div>

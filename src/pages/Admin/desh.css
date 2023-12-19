@@ -73,3 +73,75 @@
     border: 2px solid #116a7b;
 
 }
+
+@media screen and (max-width: 1024px) {
+
+    .box {
+        width: 12rem;
+        height: 8rem;
+    }
+}
+
+@media screen and (max-width: 786px) {
+
+    .box {
+        width: 9rem;
+        height: 8rem;
+    }
+
+    .box p {
+        font-size: 14px;
+        padding: 0px 5px;
+        text-align: center;
+
+    }
+
+    .widthimage {
+        width: 30px;
+    }
+
+    .widthofdeshboard {
+        width: 73% !important;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .forheight {
+        overflow-y: scroll;
+        height: 140vh;
+    }
+
+    .responsivewidht {
+        width: 80% !important;
+    }
+
+    .box {
+        width: 10rem;
+        height: 8rem;
+    }
+}
+
+@media screen and (max-width: 425px) {
+
+    .box {
+        width: 9rem;
+        height: 9rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    .box {
+        width: 7.6rem;
+        height: 7.6rem;
+    }
+
+    .custpd {
+        padding-right: 1rem;
+    }
+}
+
+.row {
+    --bs-gutter-x: 0rem !important;
+    --bs-gutter-y: 0 !important;
+}
