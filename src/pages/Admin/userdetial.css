@@ -1,10 +1,8 @@
-.customtable {
-    overflow-y: scroll;
-}
+/* .customtable {
+} */
 
 .cccc {
     height: 70vh;
-    overflow-y: scroll !important;
 }
 
 .singleuserdetials {
@@ -24,4 +22,53 @@
 
 .pdondate {
     padding: 10px 0px 10px 16px !important;
+}
+
+@media screen and (max-width: 768px) {
+    .usertimedetial {
+        height: 70vh;
+    }
+
+
+}
+
+@media screen and (max-width: 475px) {
+
+    .mywrapsmallscreen {
+        flex-wrap: wrap-reverse;
+        gap: 1rem;
+        width: 100%;
+    }
+
+
+
+    .cccc {
+        width: 100%;
+    }
+
+    .usertimedetial {
+        padding: 20px 30px !important;
+        height: 55vh !important;
+    }
+
+    .drivernameima h5 {
+        font-size: 14px;
+    }
+
+    .drivernameima img {
+        width: 20px;
+        height: 20px;
+    }
+
+}
+
+@media screen and (max-width: 320px) {
+    .usernameimage h4 {
+        font-size: 1.2rem;
+        padding: 10px 0px;
+    }
+
+    .exterwidth {
+        width: 160%;
+    }
 }

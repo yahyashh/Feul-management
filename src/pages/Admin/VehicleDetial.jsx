@@ -40,8 +40,8 @@ function AssignVehicleTable() {
 }
 export default AssignVehicle
 function TableAssign() {
-    return <div className="overfl tbl-contaienr ">
-        <table className="table table-hover text-start  table-container tbl-fixed">
+    return <div className=" tbl-contaienr w-100 overflow-scroll ">
+        <table className="table table-hover text-start  table-container tbl-fixed  overflo">
             <thead>
                 <tr>
                     <th >Vehicle Name</th>

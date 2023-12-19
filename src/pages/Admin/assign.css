@@ -64,13 +64,15 @@
         font-size: 15px !important;
     }
 
+
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 475px) {
     .tbl-fixed {
-        width: 200%;
+        width: 150%;
         overflow-x: scroll
     }
+
 
     .forsiderpadding {
         margin-left: 5rem;
@@ -81,6 +83,19 @@
         font-size: 14px !important;
     }
 
+    /* --------------- */
+
+    .responsivemargin {
+        margin-left: 4rem;
+    }
+
+    .overfl {
+        width: 120% !important;
+    }
+
+    .seainp input {
+        margin-right: 3rem !important;
+    }
 }
 
 @media screen and (max-width: 450px) {
@@ -98,8 +113,27 @@
         padding: 8px 8px;
     }
 
+    .overfl {
+        margin-right: 3rem;
+        width: 160% !important;
+    }
+
     .backbtn img {
         width: 14px;
     }
 
+}
+
+@media screen and (max-width: 375px) {
+    .overfl {
+        margin-right: 3rem;
+        width: 180% !important;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .overfl {
+        margin-right: 3rem;
+        width: 220% !important;
+    }
 }

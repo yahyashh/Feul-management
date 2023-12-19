@@ -18,7 +18,7 @@ const data = [
 ];
 function UserDetial() {
     return (
-        <div className='w-100 vh-100 overflow-hidden'>
+        <div className='w-100 vh-100 '>
             <div className='d-flex justify-content-between align-items-center  p-3 '>
 
                 <div className='d-flex  justify-contents-center align-items-center' >
@@ -28,14 +28,14 @@ function UserDetial() {
                 <button className='backbtn'><img src="./image/arrow.png" alt="" className='arrow' />Back</button>
             </div>
             <div className="usernameimage">
-                <h4 className='fw-bold'><img src="https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg" alt="" className='data-image me-3' />Tariq Masood Fueling Record</h4>
+                <h4 className='fw-bold m-0 '><img src="https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg" alt="" className='data-image me-3' />Tariq Masood Fueling Record</h4>
             </div>
 
 
 
-            <div className="row ">
-                <div className="col-lg-7 cccc  ">
-                    <table className="table table-hover text-start customtable w-100  overflow-scroll  " >
+            <div className="row  mywrapsmallscreen w-100">
+                <div className="col-lg-7 col-md-7 col-5 cccc   overflow-scroll ">
+                    <table className="table table-hover text-start customtable exterwidth" >
                         <thead>
                             <tr >
                                 <th sucope="col-1 ps-5 ">On Date</th>
@@ -61,8 +61,8 @@ function UserDetial() {
                         </tbody>
                     </table>
                 </div>
-                <div className="col-5 d-flex justify-content-center align-items center  ">
-                    <div className=" p-5 shadow-lg rounded" style={{ "height": "62vh" }}>
+                <div className="col-lg-5 col-md-5   d-flex justify-content-center align-items center  ">
+                    <div className=" p-5 shadow-lg rounded usertimedetial" style={{ "height": "62vh" }}>
                         <div className="drivernameima ">
                             <div className='d-flex flex-column'>
                                 <h5 className='fw-bold'><img src="https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg" alt="" className='data-image me-3' />Tariq Masood </h5>

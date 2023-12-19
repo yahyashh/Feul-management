@@ -22,7 +22,7 @@ const data = [
 function AssignVehicle() {
     const [assigns, setAssigns] = useState(true)
 
-    return assigns ? (<div className='w-100 d-flex'><SiderBar showText={true} />
+    return assigns ? (<div className='w-100 d-flex overflow-hidden'><SiderBar />
         <AssignVehicleTable assigns={assigns} setAssigns={setAssigns} />
 
     </div>) : <Assigncar />;
@@ -30,25 +30,22 @@ function AssignVehicle() {
 }
 function AssignVehicleTable({ assigns, setAssigns }) {
     return (
-        <div className="d-flex flex-column w-100  gap-4 p-4 vh-100">
-            <div className="d-flex  justify-content-between align-items-center ">
+        <div className="d-flex flex-column w-100  gap-4 p-4 responsivemargin vh-100">
+            <div className="d-flex  justify-content-between align-items-center me-5 m-lg-0 m-md-0  ">
                 <h5 className=''>feuling Record</h5>
                 <button className='backbtn'><img src="./image/arrow.png" alt="" className='arrow' />Back</button>
             </div>
-            <div className="d-flex justify-content-end align-items-center w-100 seainp ">
+            <div className="d-flex justify-content-end align-items-center w-100 seainp">
                 <input type="text" name="" id="" placeholder='Search here' />
             </div>
             <TableAssign assigns={assigns} setAssigns={setAssigns} />
-            <div className="d-flex justify-content-end align-items-center ">
-                <button className='backbtn'>Next</button>
-            </div>
         </div>
     )
 }
 export default AssignVehicle
 function TableAssign({ assigns, setAssigns, }) {
-    return <div className=" w-100  overfl ">
-        <div className="row justify-content-center">
+    return <div className=" w-100 overflow-scroll ">
+        <div className="row justify-content-center overfl ">
             <div className="col-md-12 ">
                 <table className="table table-hover text-start  table-container ">
                     <thead>
