@@ -1,0 +1,21 @@
+th,
+td {
+    font-size: 1.2rem;
+    padding: 10px 0px 10px 5px !important;
+}
+
+
+th {
+    background-color: #EBF1F2 !important;
+}
+
+.container {
+    border: 1px solid red;
+    height: 60%;
+    overflow-y: scroll;
+}
+
+.row {
+    --bs-gutter-x: 0rem;
+    --bs-gutter-y: 0;
+}

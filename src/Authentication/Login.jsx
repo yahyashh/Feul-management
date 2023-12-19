@@ -65,7 +65,7 @@ function LoginPage({ restPassword, handleSubmit, setRestPassword, setEmail, setP
         </div>
         <div className="d-flex flex-column gap-2 inp">
           <label htmlFor="">UserName</label>
-          <input className='p-2 inplogcol' type="text" onChange={(e) => setEmail(e.target.value)} />
+          <input className='p-2 inplogcol ' type="text" onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div className="d-flex flex-column gap-2 inp">
           <label htmlFor="">Password</label>

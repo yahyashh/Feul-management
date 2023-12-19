@@ -1,0 +1,23 @@
+.Siderbar {
+    background-color: #116a7b;
+    width: 260px;
+    color: white;
+}
+
+.bg-logo {
+    background-color: #0b444f;
+}
+
+.icons {
+    width: 20px;
+    height: 18px;
+}
+
+.gaps {
+    padding-left: 10px;
+    gap: 6rem;
+}
+
+.siderbargap {
+    gap: 2rem;
+}

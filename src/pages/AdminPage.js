@@ -1,9 +1,10 @@
 import React from 'react'
+import Deshboard from './Admin/Deshboard'
 
 const AdminPage = () => {
   return (
     <div>
-      Admin Page
+      <Deshboard />
     </div>
   )
 }
