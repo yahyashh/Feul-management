@@ -5,7 +5,6 @@ import fuelicon from "../../assets/pictures/fuelicon.svg";
 import historyicon from "../../assets/pictures/historyicon.svg";
 import profileimage from "../../assets/pictures/profilepic.svg";
 import uploadicon from "../../assets/pictures/uploadicon.svg";
-
 import axios from "axios";
 
 export default function Uploadimage() {

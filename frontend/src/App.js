@@ -15,10 +15,6 @@ function App() {
 
       <ProtectedRoute path="/admin" component={AdminPage} />
 
-
-
-
-
       <Route path="/Uploadimage" component={Uploadimage} />
 
       <Route path="/Userhistory" component={Userhistory} />
