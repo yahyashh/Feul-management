@@ -1,19 +1,18 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
 import Login from '../Authentication/Login'
 import SignUp from '../Authentication/SignUp'
+import { FuelState } from '../context/FeulProvider'
 
 const Authentication = () => {
   const [login, setLogin] = useState(true)
-  const history = useHistory()
-
+  // const { login,setLogin } = FuelState()
 
   return (
     <div>
       {login ? (
-        <Login login={login} setLogin={setLogin} />
+        <Login login={login} setLogin={setLogin}/>
       ) : (
-        <SignUp login={login} setLogin={setLogin} />
+        <SignUp/>
       )}
     </div>
   )
