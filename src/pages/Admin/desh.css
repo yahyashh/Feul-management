@@ -1,0 +1,147 @@
+.backbtn {
+    padding: 12px 20px;
+    outline: none;
+    color: white;
+    border-radius: 1.3rem;
+    border: none;
+    background-color: #116a7b;
+    display: flex;
+    gap: .9rem;
+    align-items: center;
+}
+
+.widthimage {
+    width: 40px;
+
+}
+
+.box1 {
+    background-color: #1ABCFD;
+}
+
+.box2 {
+    background-color: #F59CD1;
+}
+
+.box3 {
+    background-color: #FF8B88;
+}
+
+.box4 {
+    background-color: #FEB981;
+}
+
+.box {
+    width: 15rem;
+    height: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.arrow {
+    width: 1.2rem;
+}
+
+.inputbox-width {
+    width: 100%;
+}
+
+.firstbox {
+    width: 14rem;
+}
+
+.secondbox-width {
+    width: 7rem;
+}
+
+.thridbox {
+    width: 10rem;
+}
+
+.boxinp {
+    border: none;
+    outline: none;
+    border: 2px solid #116a7b;
+}
+
+.boxinp:focus {
+    outline: none;
+    border: none;
+    border: 2px solid #116a7b;
+
+}
+
+@media screen and (max-width: 1024px) {
+
+    .box {
+        width: 12rem;
+        height: 8rem;
+    }
+}
+
+@media screen and (max-width: 786px) {
+
+    .box {
+        width: 9rem;
+        height: 8rem;
+    }
+
+    .box p {
+        font-size: 14px;
+        padding: 0px 5px;
+        text-align: center;
+
+    }
+
+    .widthimage {
+        width: 30px;
+    }
+
+    .widthofdeshboard {
+        width: 73% !important;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .forheight {
+        overflow-y: scroll;
+        height: 140vh;
+    }
+
+    .responsivewidht {
+        width: 80% !important;
+    }
+
+    .box {
+        width: 10rem;
+        height: 8rem;
+    }
+}
+
+@media screen and (max-width: 425px) {
+
+    .box {
+        width: 9rem;
+        height: 9rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    .box {
+        width: 7.6rem;
+        height: 7.6rem;
+    }
+
+    .custpd {
+        padding-right: 1rem;
+    }
+}
+
+.row {
+    --bs-gutter-x: 0rem !important;
+    --bs-gutter-y: 0 !important;
+}

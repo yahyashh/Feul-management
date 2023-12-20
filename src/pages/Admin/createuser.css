@@ -1,0 +1,134 @@
+.updata-image {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #116a7b;
+    outline: none;
+    border: none;
+    color: white;
+    padding: .8rem;
+    border-radius: .4rem;
+    margin-left: -1.5rem;
+}
+
+.updata-image img {
+    padding-right: 10px;
+    width: 25px;
+    height: auto;
+}
+
+
+
+label {
+    font-size: 1.2rem;
+}
+
+
+.inp {
+    width: 13rem;
+    padding: 12px 20px;
+    border: none;
+    outline: none;
+    border: 2px solid #6F6F6F;
+}
+
+.inp:focus {
+    outline: none;
+}
+
+.inpboxemial {
+    width: 16rem !important;
+}
+
+
+.customgap {
+    gap: 5rem !important;
+}
+
+.btnsubmate {
+    padding: 14px 22px;
+    border-radius: 1.5rem;
+    outline: none;
+    border: none;
+    background-color: #116a7b;
+    color: white;
+}
+
+.heightusercontainer {
+    height: 75vh !important;
+}
+
+.languagebox {
+    margin-top: 1rem;
+    border: 2px solid #6F6F6F;
+    width: 18rem;
+    padding: 8px 12px 8px 8px;
+    border-radius: 5px;
+    height: 3.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width: 786px) {
+    .flexrevers {
+        flex-wrap: wrap-reverse;
+    }
+
+    .customgap {
+        gap: 1rem !important;
+    }
+
+    .btnbox {
+        margin-left: 1rem !important;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .inp {
+        width: 10.5rem;
+    }
+
+    .flexrevers {
+        padding: 10px 8px;
+    }
+
+    .btnbox {
+        margin-left: .5rem !important;
+
+    }
+
+    .rfside {
+        gap: 1rem;
+    }
+
+    .rfside h5 {
+        text-align: center !important;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .rfside {
+
+        align-items: center !important;
+    }
+
+    .inp {
+        width: 16rem;
+    }
+
+    .languagebox {
+        width: 16rem;
+    }
+
+    .customgap {
+        gap: 1rem !important;
+        display: flex !important;
+        justify-content: center;
+    }
+
+    .btnbox {
+        margin-left: 0rem !important;
+
+    }
+}

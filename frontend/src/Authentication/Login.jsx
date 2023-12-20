@@ -103,7 +103,7 @@ function LoginPage({ restPassword, handleSubmit, setRestPassword, handleInputCha
           <label htmlFor="">Email</label>
           <input className='p-2 inplogcol' type="email" name="email" onChange={handleInputChange} />
         </div>
-        <div className="d-flex flex-column gap-2 inp">
+        <div className="d-flex flex-column gap-2 mt-2">
           <label htmlFor="">Password</label>
           <input className='p-2 inplogcol' type="password" name="password" onChange={handleInputChange} />
         </div>
