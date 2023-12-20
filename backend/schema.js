@@ -7,8 +7,6 @@ const userSchema = new mongoose.Schema({
   email: String,
   password: String,
   phoneNumber: String,
-  address: String,
-  CNIC: String,
   image: String,
   isAdmin: { type: String, default: 'client' },
   resetPasswordToken: String,
