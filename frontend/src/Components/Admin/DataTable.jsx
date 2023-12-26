@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './table.css';
+import axios from "axios"
+import { useHistory } from 'react-router-dom'
+
 const DataTable = () => {
     // Sample data
     const data = [
@@ -16,6 +19,33 @@ const DataTable = () => {
         { id: 2, name: 'Kohli', vehicle: 'Mahran', time: '08:10 PM', usage: 'Weekly', volume: '10L', cost: '$34' },
         // Add more data as needed
     ];
+    const [users, setUsers] = useState([]);
+    const history = useHistory()
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/users-with-wehical');
+        console.log(response.data);
+        setUsers(response.data);
+      } catch (error) {
+        console.error('Error fetching users with wehical data:', error.message);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
+  const deleteWehicalFromUser = async (userId) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/delete-wehical-from-user/${userId}`);
+      // Fetch the updated user list after deletion
+      const response = await axios.get('http://localhost:5000/users-with-wehical');
+      setUsers(response.data);
+    } catch (error) {
+      console.error('Error deleting wehical from user:', error.message);
+    }
+  };
 
     return (
         <div className="overflow-scroll">

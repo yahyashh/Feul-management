@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import './login.css';
 import { ForgetPassword } from './ForgetPassword';
@@ -19,6 +19,7 @@ const Login = ({login, setLogin}) => {
   const history = useHistory()
   const [user, setUser] = useState('user');
 
+
   const handleInputChange = (e) => {
     setLoginData({
       ...loginData,
@@ -31,33 +32,42 @@ const Login = ({login, setLogin}) => {
   
     try {
       const response = await axios.post('http://localhost:5000/api/login', loginData);
+      console.log("before login true",isLogin);
+      setIsLogin(true)
+      console.log("After login true",isLogin);
       console.log(response.data.user);
-  console.log(response.data.user.isAdmin);
-
-  const { token, user } = response.data;
-
-  // Store the token and user data in localStorage or wherever needed
-  localStorage.setItem('token', token);
-  localStorage.setItem('user', JSON.stringify(user));
-
-  setIsLogin(true)
-  // Log the token and user data to the console
-  console.log('Token:', token);
-  console.log('User Data:', user);
+      console.log(response.data.user.isAdmin);
+      
+      const { token, user } = response.data;
+      
+      const userId = response.data.user._id ;
+      console.log(userId);
+      const wehicalId = user.wehical ? user.wehical._id : null; 
+      console.log("sfsdgsgweh" + wehicalId);
+      // Store the token and user data in localStorage or wherever needed
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
+      
+      // Log the token and user data to the console
+      console.log('Token:', token);
+      console.log('User Data:', user);
       if (user.isAdmin === 'client') {
-        history.push("/user")
+        history.push(`/user?userId=${userId}&wehicalId=${wehicalId}`)
         alert("client login")
       }else{
         history.push("/admin")
         alert("admain login")
       }
-  
     } catch (error) {
       alert(error.response.data.error)
       console.error('Error during login:', error.response.data.error);
       // Handle other errors, display a message, or redirect as needed
     }
+    console.log("Outside trycatch",isLogin);
   };
+  useEffect(() => {
+    console.log('isLogin changed:', isLogin);
+  }, [isLogin]);
 
   const handleRadioChange = (event) => {
     setUser(event.target.value);
@@ -93,7 +103,7 @@ function LoginPage({ restPassword, handleSubmit, setRestPassword, handleInputCha
           <label htmlFor="">Email</label>
           <input className='p-2 inplogcol' type="email" name="email" onChange={handleInputChange} />
         </div>
-        <div className="d-flex flex-column gap-2 mt-2">
+        <div className="d-flex flex-column gap-2 inp">
           <label htmlFor="">Password</label>
           <input className='p-2 inplogcol' type="password" name="password" onChange={handleInputChange} />
         </div>

@@ -1,5 +1,9 @@
 import SiderBar from "./SiderBar"
+import React, { useEffect, useState } from 'react';
 import "./assign.css"
+import axios from "axios"
+import { useHistory } from 'react-router-dom'
+
 const data = [
     { id: 1, Vehiclename: 'Honda', assignedname: 'furkan', vehicletype: 'Honda', numberplate: '4325d', actions: "Active" },
     { id: 2, Vehiclename: 'suzike', assignedname: 'Zurdan', vehicletype: 'suzike', numberplate: 'W9834', actions: "Active" },
@@ -16,14 +20,28 @@ const data = [
 ];
 
 function AssignVehicle() {
+    const [users, setUsers] = useState([]);
+    const history = useHistory();
 
+    useEffect(() => {
+      const fetchUsers = async () => {
+        try {
+          const response = await axios.get('http://localhost:5000/users-with-wehical');
+          setUsers(response.data);
+        } catch (error) {
+          console.error('Error fetching users with wehical data:', error.message);
+        }
+      };
+  
+      fetchUsers();
+    }, []);
 
     return <div className='w-100 d-flex  overflow-hidden '><SiderBar showText={true} />
-        <AssignVehicleTable />
+        <AssignVehicleTable users={users}/>
     </div>
 
 }
-function AssignVehicleTable() {
+function AssignVehicleTable({users}) {
     return (
         <div className="d-flex flex-column w-100  gap-4 p-sm-4 p-lg-4  ps-2 pt-3 vh-100 forsiderpadding  overflow-hidden">
             <div className="d-flex  justify-content-between align-items-center ">
@@ -34,12 +52,12 @@ function AssignVehicleTable() {
                 <input type="text" name="" id="" placeholder='Search Name' />
                 <input type="text" name="" id="" placeholder='Search Vehicle' />
             </div>
-            <TableAssign />
+            <TableAssign users={users}/>
         </div>
     )
 }
 export default AssignVehicle
-function TableAssign() {
+function TableAssign({users}) {
     return <div className=" tbl-contaienr w-100 overflow-scroll ">
         <table className="table table-hover text-start  table-container tbl-fixed  overflo">
             <thead>
@@ -48,17 +66,17 @@ function TableAssign() {
                     <th >Assigned To</th>
                     <th >Vehicle Type </th>
                     <th >Number Plate</th>
-                    <th >Active/NonActive</th>
+                    <th >Email</th>
                 </tr>
             </thead>
             <tbody>
-                {data.map(item => (
+                {users.map(item => (
                     <tr key={item.id}>
-                        <td><img src="./image/honda.png" alt="" className='data-image me-3' />{item.Vehiclename}</td>
-                        <td><img src="https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg" alt="" className='data-image me-3' />{item.assignedname}</td>
-                        <td className='pd'>{item.vehicletype}</td>
-                        <td className='pd'>{item.numberplate}</td>
-                        <td className='pd fw-bold'>{item.actions}</td>
+                        <td><img src="./image/honda.png" alt="" className='data-image me-3' /></td>
+                        <td><img src="https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg" alt="" className='data-image me-3' />{item.name}</td>
+                        <td className='pd'>{item.wehical.vehicleType}</td>
+                        <td className='pd'>{item.wehical.plateNumber}</td>
+                        <td className='pd fw-bold'>{item.email}</td>
 
                     </tr>
                 ))}

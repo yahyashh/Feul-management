@@ -42,7 +42,7 @@ const storage = multer.diskStorage({
 
 app.post('/api/create', upload.single('image'), async (req, res) => {
   try {
-    const { name, email, password, phoneNumber, isAdmin } = req.body;
+    const { name, email, password, phoneNumber, address, CNIC, isAdmin } = req.body;
 console.log(req.body);
     // Check if the email already exists
     const existingUser = await User.findOne({ email });
@@ -62,6 +62,8 @@ console.log(req.body);
       email,
       password: hashedPassword,
       phoneNumber,
+      address,
+      CNIC,
       image: imageName,
       isAdmin: isAdmin ,
     });
@@ -278,7 +280,7 @@ app.delete('/api/use/:id', async (req, res) => {
 // this is the api for the assign wehical 
 
 app.post('/api/assignwehical/:userId', async (req, res) => {
-  const { vehicleType, plateNumber } = req.body;
+  const { vehicleName, vehicleType, plateNumber } = req.body;
   const userId = req.params.userId;
 console.log(userId);
   try {
@@ -290,6 +292,7 @@ console.log(userId);
 
     // Create a new wehical
     const newWehical = new Wehical({
+      vehicleName,
       vehicleType,
       plateNumber,
       // ... other wehical fields

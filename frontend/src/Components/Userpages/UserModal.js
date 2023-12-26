@@ -21,16 +21,18 @@ import {
   import emailImg from "../../assets/user/email.png"
   import { useHistory } from 'react-router-dom'
   import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { FuelState } from '../../context/FeulProvider'
+  import axios from 'axios'
+  import { FuelState } from '../../context/FeulProvider'
   
-
 
 const UserModal = ({children}) => {
     const { isOpen, onOpen, onClose } = useDisclosure() 
     const {isLogin, setIsLogin} = FuelState()
     const history =useHistory()
+    const { user, setUser } = FuelState()
+
     const logoutHandler = ()=>{
-      setIsLogin(false)
+
     }
   
     return (
@@ -57,7 +59,7 @@ const UserModal = ({children}) => {
                 <img src={nameImg} alt="/" className=' h-6'/>
                 <label className='text-lg'>Name</label>
               </div>
-                <p className='text-lg'>yahya shah</p>
+                <p className='text-lg'>{user.name}</p>
               </FormControl>
               <hr />
 
@@ -93,7 +95,7 @@ const UserModal = ({children}) => {
                 <img src={emailImg} alt="/" className=' h-6'/>
                 <label className='text-lg'>Email</label>
               </div>
-                <p className='text-lg'>yahya@gmail.com</p>
+                <p className='text-lg'>{user.email}</p>
               </FormControl>
               <hr />
 

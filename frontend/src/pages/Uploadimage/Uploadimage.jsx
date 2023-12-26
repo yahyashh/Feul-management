@@ -1,103 +1,66 @@
 import React, { useState } from "react";
 import "./Uploadimage.css";
-
 import fuelicon from "../../assets/pictures/fuelicon.svg";
 import historyicon from "../../assets/pictures/historyicon.svg";
 import profileimage from "../../assets/pictures/profilepic.svg";
 import uploadicon from "../../assets/pictures/uploadicon.svg";
-
 import axios from "axios";
 
 export default function Uploadimage() {
   const YourFormComponent = () => {
-    const [stationName, setStationName] = useState("");
-    const [pricePerLitre, setPricePerLitre] = useState("");
-    const [totalLitre, setTotalLitre] = useState("");
-    const [totalPrice, setTotalPrice] = useState("");
-    const [location, setLocation] = useState("");
-    const [dateTime, setDateTime] = useState("");
-
-    const submitData = async () => {
-      if (
-        stationName === "" ||
-        pricePerLitre === "" ||
-        totalLitre === "" ||
-        totalPrice === "" ||
-        location === "" ||
-        dateTime === ""
-      ) {
-        alert("Please fill in all fields");
-      }
-
-      try {
-        const response = await axios.post(
-          "http://localhost:5000/formfulldata",
-          {
-            stationName,
-            pricePerLitre,
-            totalLitre,
-            totalPrice,
-            location,
-            dateTime,
-          }
-        );
-
-        console.log("Server response:", response.data);
-      } catch (error) {
-        console.error("Error submitting data:", error);
-      }
-    };
-
-    // upload image
-
     const [selectedFile, setSelectedFile] = useState(null);
+    const userId = new URLSearchParams(window.location.search).get('userId');
+    const wehicalId = new URLSearchParams(window.location.search).get('wehicalId');
+
+    // Log the extracted values
+    console.log('User ID:', userId);
+    console.log('Wehical ID:', wehicalId);
+
+    const [formData, setFormData] = useState({
+        userId: userId,
+        wehicalId: wehicalId,
+        stationName: '',
+        pricePerLiter: '',
+        totalLiters: '',
+        totalPrice: '',
+        location: '',
+        date: '', // New date input field
+        image: null,
+    });
+
+    const handleInputChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
     const handleFileChange = (event) => {
       // The selected file can be accessed using event.target.files
       const file = event.target.files[0];
-
       // Update state with the selected file
       setSelectedFile(file);
     };
 
-    const handleUpload = async () => {
-      if (selectedFile) {
-        console.log("Uploading file:", selectedFile);
-
-        // Create a FormData object
-        const formData = new FormData();
-
-        // Append form data to the FormData object
-        formData.append("stationName", stationName);
-        formData.append("pricePerLitre", pricePerLitre);
-        formData.append("totalLitre", totalLitre);
-        formData.append("totalPrice", totalPrice);
-        formData.append("location", location);
-        formData.append("dateTime", dateTime);
-
-        // Append the file to the FormData object
-        formData.append("image", selectedFile);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const data = new FormData();
+        data.append("userId", formData.userId)
+        data.append("wehicalId", formData.wehicalId)
+        data.append("stationName", formData.stationName)
+        data.append("pricePerLiter", formData.pricePerLiter)
+        data.append("totalLiters", formData.totalLiters)
+        data.append("totalPrice", formData.totalPrice)
+        data.append("location", formData.location)
+        data.append("date", formData.date)
+        data.append("image", selectedFile)
 
         try {
-          // Use axios to send the FormData to the server
-          const response = await axios.post(
-            "http://localhost:5000/formfulldata",
-            formData,
-            {
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            }
-          );
-
-          console.log("Server response:", response.data);
+            
+            await axios.post(`http://localhost:5000/api/fueling/add-fueling/${userId}`, data);
+            console.log('Fueling data submitted successfully' , data);
         } catch (error) {
-          console.error("Error submitting data:", error);
+            console.error('Error submitting fueling data:', error.message);
         }
-      } else {
-        console.log("No file selected.");
-      }
     };
+
 
     return (
       <>
@@ -120,8 +83,8 @@ export default function Uploadimage() {
           </div>
 
           <div className="twoforms">
-            <div className="form ">
-              <form>
+            <form onSubmit={handleSubmit} className="form ">
+              <div>
                 <div className="d-flex flex-wrap mt-5  gap-4 align-items-md-center justify-content-center ">
                   {/* First Line */}
                   <div className="d-flex flex-column gap-3 inp col-md-4">
@@ -129,7 +92,8 @@ export default function Uploadimage() {
                     <input
                       className="p-2 border-0 inplogcol"
                       type="text"
-                      onChange={(e) => setStationName(e.target.value)}
+                      name="stationName"
+                      onChange={handleInputChange}
                     />
                   </div>
 
@@ -138,7 +102,8 @@ export default function Uploadimage() {
                     <input
                       className="p-2 border-0 inplogcol"
                       type="text"
-                      onChange={(e) => setPricePerLitre(e.target.value)}
+                      name="pricePerLiter"
+                      onChange={handleInputChange}
                     />
                   </div>
 
@@ -148,7 +113,8 @@ export default function Uploadimage() {
                     <input
                       className="p-2 border-0 inplogcol"
                       type="text"
-                      onChange={(e) => setTotalLitre(e.target.value)}
+                      name="totalLiters"
+                      onChange={handleInputChange}
                     />
                   </div>
 
@@ -158,7 +124,8 @@ export default function Uploadimage() {
                     <input
                       className="p-2 border-0 inplogcol"
                       type="text"
-                      onChange={(e) => setTotalPrice(e.target.value)}
+                      name="totalPrice"
+                      onChange={handleInputChange}
                     />
                   </div>
 
@@ -168,7 +135,8 @@ export default function Uploadimage() {
                     <input
                       className="p-2 border-0 inplogcol"
                       type="text"
-                      onChange={(e) => setLocation(e.target.value)}
+                      name="location"
+                      onChange={handleInputChange}
                     />
                   </div>
 
@@ -177,24 +145,22 @@ export default function Uploadimage() {
                     <label htmlFor="">Date/time</label>
                     <input
                       className="p-2 border-0 inplogcol"
-                      type="text"
-                      onChange={(e) => setDateTime(e.target.value)}
+                      type="date"
+                      name="date"
+                      onChange={handleInputChange}
                     />
                   </div>
                 </div>
-              </form>
+              </div>
               <div className="submitbutton">
                 <button
                   className="submitbtn"
-                  onClick={() => {
-                    submitData();
-                    handleUpload();
-                  }}
+                  type="submit"
                 >
                   Submit
                 </button>
               </div>
-            </div>
+            </form>
             <div className="upload">
               <div className="uploadbutton">
                 {selectedFile && (
@@ -210,6 +176,7 @@ export default function Uploadimage() {
                 {/* Hidden file input */}
                 <input
                   type="file"
+                  name="image"
                   onChange={handleFileChange}
                   style={{ display: "none" }}
                 />
