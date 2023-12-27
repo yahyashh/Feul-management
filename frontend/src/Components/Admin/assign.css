@@ -23,7 +23,6 @@
 }
 
 .overfl {
-    /* overflow-x: hidden !important; */
     width: 100%;
     overflow: scroll;
 }
@@ -37,6 +36,13 @@
     padding-top: 1.3rem !important;
 }
 
+.h2vehicledetial {
+    font-size: 1.3rem;
+}
+
+.showoverflow {
+    overflow-x: hidden !important;
+}
 
 
 @media screen and (max-width: 768px) {
@@ -44,6 +50,7 @@
         width: 240%;
         overflow-x: scroll
     }
+
 
 
 
@@ -77,6 +84,15 @@
     .forsiderpadding {
         margin-left: 5rem;
     }
+
+    .myoverflow {
+        width: 180%;
+    }
+
+    .pd {
+        padding-top: 1.1rem !important;
+    }
+
 
     th,
     td {
@@ -128,6 +144,10 @@
     .overfl {
         margin-right: 3rem;
         width: 180% !important;
+    }
+
+    .myoverflow {
+        width: 260%;
     }
 }
 

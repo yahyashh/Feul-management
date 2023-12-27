@@ -15,7 +15,7 @@ function DeshDetial() {
   return (<div className='d-flex flex-column w-100  vh-100 forsiderpadding responsivewidht gap-1 p-sm-2 p-lg-2  ps-2 pt-3  '>
     <div className='forheight'>
       <div className="d-flex justify-content-between align-items-center hg pt-4 pb-3 w-sm-75 w-100 custpd">
-        <h5 className='m-0'>feuling Record</h5>
+        <h3 className='m-0'>DeshBoard</h3>
         <button className='backbtn'><img src="./image/arrow.png" alt="" className='arrow' />Back</button>
       </div>
       <div className="d-flex align-items-center gap-md-2 gap-lg-4 gap-2 flex-wrap  px-1">

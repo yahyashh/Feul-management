@@ -10,7 +10,7 @@ th {
 }
 
 .container {
-    height: 60%;
+    height: 60vh;
     margin: 0px;
     overflow-y: scroll;
 }
