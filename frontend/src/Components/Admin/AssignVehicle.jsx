@@ -81,7 +81,7 @@ function TableAssign({user, setUser, deleteUser, AssignVeh}) {
                                 <td className='pd'>{item.phoneNumber}</td>
                                 <td className='pd'>{item.address}</td>
                                 <td className='pd updeladd' ><img src="./image/upd.png" alt="" /><img src="./image/delete.png" alt="" onClick={()=> deleteUser(item._id)} /> 
-                                {item.wehicle ? (
+                                {item.wehical ? (
                                     <img src="./" alt="" />
                                 ):(
                                     <img src="./image/add.png" alt="" onClick={() => AssignVeh(item._id)} /> 
