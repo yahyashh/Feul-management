@@ -5,11 +5,11 @@ import { ForgetPassword } from './ForgetPassword';
 import axios from "axios"
 import { FuelState } from '../context/FeulProvider';
 
-const Login = ({login, setLogin}) => {
+const Login = ({ login, setLogin }) => {
   // const [email, setEmail] = useState("")
   // const [password, setPassword] = useState("")
   const [restPassword, setRestPassword] = useState(true)
-  const {isLogin, setIsLogin} = FuelState()
+  const { isLogin, setIsLogin } = FuelState()
 
   const [loginData, setLoginData] = useState({
     email: '',
@@ -29,32 +29,32 @@ const Login = ({login, setLogin}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await axios.post('http://localhost:5000/api/login', loginData);
-      console.log("before login true",isLogin);
+      console.log("before login true", isLogin);
       setIsLogin(true)
-      console.log("After login true",isLogin);
+      console.log("After login true", isLogin);
       console.log(response.data.user);
       console.log(response.data.user.isAdmin);
-      
+
       const { token, user } = response.data;
-      
-      const userId = response.data.user._id ;
+
+      const userId = response.data.user._id;
       console.log(userId);
-      const wehicalId = user.wehical ? user.wehical._id : null; 
+      const wehicalId = user.wehical ? user.wehical._id : null;
       console.log("sfsdgsgweh" + wehicalId);
       // Store the token and user data in localStorage or wherever needed
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
-      
+
       // Log the token and user data to the console
       console.log('Token:', token);
       console.log('User Data:', user);
       if (user.isAdmin === 'client') {
         history.push(`/user?userId=${userId}&wehicalId=${wehicalId}`)
         alert("client login")
-      }else{
+      } else {
         history.push("/admin")
         alert("admain login")
       }
@@ -63,7 +63,7 @@ const Login = ({login, setLogin}) => {
       console.error('Error during login:', error.response.data.error);
       // Handle other errors, display a message, or redirect as needed
     }
-    console.log("Outside trycatch",isLogin);
+    console.log("Outside trycatch", isLogin);
   };
   useEffect(() => {
     console.log('isLogin changed:', isLogin);
@@ -86,7 +86,7 @@ function LoginPage({ restPassword, handleSubmit, setRestPassword, handleInputCha
     <div className='col-12 col-sm-12 col-md-6 col-lg-6 bg-custom '>
       <div className="text-center text-white pt-5">
         <p>Welcome To Our Website !</p>
-        <h3>Feul Mangment System</h3>
+        <h1>Feul Mangment System</h1>
       </div>
       <div>
         <img src='./image/login.png ' className='img-fluid' alt="" />
@@ -95,24 +95,23 @@ function LoginPage({ restPassword, handleSubmit, setRestPassword, handleInputCha
     <div className='pt-2 col-12  col-sm-12 col-md-6 col-lg-6  d-flex justify-content-center align-items-center  flex-column loginPadding '>
 
       <form onSubmit={handleSubmit} className='d-flex gap-2 flex-column '>
-        <div className="text-div text-center pb-2 ">
+        <div className="text-div text-center pb-2 mt-2 ">
           <h2 style={{ fontSize: 'calc(1rem + 0.9vw)' }} >Hello! Welcome back !</h2>
           <p className='text-secondary pt-2 ' >Log in with your data that you entered during in your registration.</p>
         </div>
-        <div className="d-flex flex-column gap-2 inp">
+        <div className="d-flex flex-column gap-2 ">
           <label htmlFor="">Email</label>
           <input className='p-2 inplogcol' type="email" name="email" onChange={handleInputChange} />
         </div>
-        <div className="d-flex flex-column gap-2 inp">
+        <div className="d-flex flex-column gap-2 ">
           <label htmlFor="">Password</label>
           <input className='p-2 inplogcol' type="password" name="password" onChange={handleInputChange} />
         </div>
         <div className="d-flex justify-content-end align-items-center pt-2 pb-2">
           <button className='m-0 text-decoration-underline custom-underline-offset forgetbtn cursor-pointer' onClick={() => setRestPassword(!restPassword)}>Forget Password</button>
         </div>
-        <button type='submit' className='submitbtn'>Login</button>
+        <div className='d-flex justify-content-center align-items-center'><button type='submit' className='submitbtn '>Login</button></div>
         <div className='d-flex justify-content-between align-items-center pt-3'>
-
           <div><input
             type="radio"
             id="user"

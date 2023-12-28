@@ -17,19 +17,19 @@ export default function Uploadimage() {
     console.log('Wehical ID:', wehicalId);
 
     const [formData, setFormData] = useState({
-        userId: userId,
-        wehicalId: wehicalId,
-        stationName: '',
-        pricePerLiter: '',
-        totalLiters: '',
-        totalPrice: '',
-        location: '',
-        date: '', // New date input field
-        image: null,
+      userId: userId,
+      wehicalId: wehicalId,
+      stationName: '',
+      pricePerLiter: '',
+      totalLiters: '',
+      totalPrice: '',
+      location: '',
+      date: '', // New date input field
+      image: null,
     });
 
     const handleInputChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+      setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleFileChange = (event) => {
@@ -40,25 +40,25 @@ export default function Uploadimage() {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        const data = new FormData();
-        data.append("userId", formData.userId)
-        data.append("wehicalId", formData.wehicalId)
-        data.append("stationName", formData.stationName)
-        data.append("pricePerLiter", formData.pricePerLiter)
-        data.append("totalLiters", formData.totalLiters)
-        data.append("totalPrice", formData.totalPrice)
-        data.append("location", formData.location)
-        data.append("date", formData.date)
-        data.append("image", selectedFile)
+      e.preventDefault();
+      const data = new FormData();
+      data.append("userId", formData.userId)
+      data.append("wehicalId", formData.wehicalId)
+      data.append("stationName", formData.stationName)
+      data.append("pricePerLiter", formData.pricePerLiter)
+      data.append("totalLiters", formData.totalLiters)
+      data.append("totalPrice", formData.totalPrice)
+      data.append("location", formData.location)
+      data.append("date", formData.date)
+      data.append("image", selectedFile)
 
-        try {
-            
-            await axios.post(`http://localhost:5000/api/fueling/add-fueling/${userId}`, data);
-            console.log('Fueling data submitted successfully' , data);
-        } catch (error) {
-            console.error('Error submitting fueling data:', error.message);
-        }
+      try {
+
+        await axios.post(`http://localhost:5000/api/fueling/add-fueling/${userId}`, data);
+        console.log('Fueling data submitted successfully', data);
+      } catch (error) {
+        console.error('Error submitting fueling data:', error.message);
+      }
     };
 
 
@@ -87,7 +87,7 @@ export default function Uploadimage() {
               <div>
                 <div className="d-flex flex-wrap mt-5  gap-4 align-items-md-center justify-content-center ">
                   {/* First Line */}
-                  <div className="d-flex flex-column gap-3 inp col-md-4">
+                  <div className="d-flex flex-column gap-3  col-md-4">
                     <label htmlFor="">Station name</label>
                     <input
                       className="p-2 border-0 inplogcol"
@@ -97,7 +97,7 @@ export default function Uploadimage() {
                     />
                   </div>
 
-                  <div className="d-flex flex-column gap-3 inp col-md-4">
+                  <div className="d-flex flex-column gap-3  col-md-4">
                     <label htmlFor="">Price /L</label>
                     <input
                       className="p-2 border-0 inplogcol"
@@ -108,7 +108,7 @@ export default function Uploadimage() {
                   </div>
 
                   {/* Second Line */}
-                  <div className="d-flex flex-column gap-3 inp col-md-4">
+                  <div className="d-flex flex-column gap-3  col-md-4">
                     <label htmlFor="">Total L</label>
                     <input
                       className="p-2 border-0 inplogcol"
@@ -119,7 +119,7 @@ export default function Uploadimage() {
                   </div>
 
                   {/* Third Line */}
-                  <div className="d-flex flex-column gap-3 inp col-md-4">
+                  <div className="d-flex flex-column gap-3  col-md-4">
                     <label htmlFor="">Total Price</label>
                     <input
                       className="p-2 border-0 inplogcol"
@@ -130,7 +130,7 @@ export default function Uploadimage() {
                   </div>
 
                   {/* Fourth Line */}
-                  <div className="d-flex flex-column gap-3 inp col-md-4">
+                  <div className="d-flex flex-column gap-3  col-md-4">
                     <label htmlFor="">Location</label>
                     <input
                       className="p-2 border-0 inplogcol"
@@ -141,7 +141,7 @@ export default function Uploadimage() {
                   </div>
 
                   {/* Fifth Line */}
-                  <div className="d-flex flex-column gap-3 inp col-md-4">
+                  <div className="d-flex flex-column gap-3  col-md-4">
                     <label htmlFor="">Date/time</label>
                     <input
                       className="p-2 border-0 inplogcol"

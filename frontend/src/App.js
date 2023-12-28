@@ -15,9 +15,9 @@ function App() {
     <div>
       <Route path="/" component={Authentication} exact />
 
-      <ProtectedRoute path="/user" component={UserPage} />
+      <Route path="/user" component={UserPage} />
 
-      <ProtectedRoute path="/admin" component={AdminPage} />
+      <Route path="/admin" component={AdminPage} />
 
       <Route path="/Uploadimage" component={Uploadimage} />
 

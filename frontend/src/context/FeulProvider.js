@@ -8,12 +8,12 @@ const FuelProvider = ({ children }) => {
   const [user, setUser] = useState([]);
   const history = useHistory()
 
-  useEffect(()=>{
-    const userInfo=JSON.parse(localStorage.getItem("userInfo"))
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     console.log(isLogin);
     setUser(userInfo)
     console.log(user);
-  },[history])
+  }, [history])
 
   return (
     <FuelContext.Provider value={{ isLogin, setIsLogin, user, setUser }}>

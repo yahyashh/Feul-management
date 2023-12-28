@@ -139,3 +139,11 @@ table {
 .eye {
     height: 1rem;
 }
+
+.mybackcolor th {
+    background-color: #116A7B !important;
+}
+
+.navbarbuttons {
+    display: none;
+}

@@ -24,56 +24,56 @@ function AssignVehicle() {
     const history = useHistory();
 
     useEffect(() => {
-      const fetchUsers = async () => {
-        try {
-          const response = await axios.get('http://localhost:5000/users-with-wehical');
-          setUsers(response.data);
-        } catch (error) {
-          console.error('Error fetching users with wehical data:', error.message);
-        }
-      };
-  
-      fetchUsers();
+        const fetchUsers = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/users-with-wehical');
+                setUsers(response.data);
+            } catch (error) {
+                console.error('Error fetching users with wehical data:', error.message);
+            }
+        };
+
+        fetchUsers();
     }, []);
 
     return <div className='w-100 d-flex  overflow-hidden '><SiderBar showText={true} />
-        <AssignVehicleTable users={users}/>
+        <AssignVehicleTable users={users} />
     </div>
 
 }
-function AssignVehicleTable({users}) {
+function AssignVehicleTable({ users }) {
     return (
         <div className="d-flex flex-column w-100  gap-4 p-sm-4 p-lg-4  ps-2 pt-3 vh-100 forsiderpadding  overflow-hidden">
             <div className="d-flex  justify-content-between align-items-center ">
-                <h5 className='m-0'>Vehicle Detials</h5>
+                <h2 className=' h2vehicledetialm-0'>Vehicle Detials</h2>
                 <button className='backbtn'><img src="./image/arrow.png" alt="" className='arrow' />Back</button>
             </div>
             <div className="d-flex justify-content-start align-items-center w-100 seainp gap-2 gap-lg-4 gap-sm-4 gap- flex-wrap">
                 <input type="text" name="" id="" placeholder='Search Name' />
                 <input type="text" name="" id="" placeholder='Search Vehicle' />
             </div>
-            <TableAssign users={users}/>
+            <TableAssign users={users} />
         </div>
     )
 }
 export default AssignVehicle
-function TableAssign({users}) {
-    return <div className=" tbl-contaienr w-100 overflow-scroll ">
-        <table className="table table-hover text-start  table-container tbl-fixed  overflo">
-            <thead>
+function TableAssign({ users }) {
+    return <div className=" tbl-contaienr w-100 overfl">
+        <table class="table showoverflow">
+            <thead class="thead-dark">
                 <tr>
-                    <th >Vehicle Name</th>
-                    <th >Assigned To</th>
-                    <th >Vehicle Type </th>
-                    <th >Number Plate</th>
-                    <th >Email</th>
+                    <th scope="col">VehicleName</th>
+                    <th scope="col">Assign to</th>
+                    <th scope="col">Vehicle type</th>
+                    <th scope="col">Number Plate</th>
+                    <th scope="col">Active/Noactive</th>
                 </tr>
             </thead>
             <tbody>
                 {users.map(item => (
                     <tr key={item.id}>
                         <td><img src="./image/honda.png" alt="" className='data-image me-3' /></td>
-                        <td><img src="https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg" alt="" className='data-image me-3' />{item.name}</td>
+                        <td ><h3 className="m-0 d-flex"><img src="https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg" alt="" className='data-image me-3' />{item.name}</h3></td>
                         <td className='pd'>{item.wehical.vehicleType}</td>
                         <td className='pd'>{item.wehical.plateNumber}</td>
                         <td className='pd fw-bold'>{item.email}</td>
