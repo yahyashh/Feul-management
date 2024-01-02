@@ -33,7 +33,7 @@ const UserModal = ({ children }) => {
   console.log(user);
 
   const logoutHandler = () => {
-
+   history.push("/")
   }
 
   return (
@@ -47,7 +47,7 @@ const UserModal = ({ children }) => {
         <ModalContent>
           <ModalHeader paddingLeft={0} paddingRight={0}>
             <div className='flex items-center gap-2 pl-6 pb-2'>
-              <img src={image} alt="" className='rounded-full w-12 h-12' />
+              <img src={`http://localhost:5000/uploads/${user.image}`} alt="" className='rounded-full w-12 h-12' />
               <h1 className=''>User name</h1>
             </div>
             <hr />
@@ -58,7 +58,7 @@ const UserModal = ({ children }) => {
             <FormControl mt={0} display={'flex'} justifyContent={'space-between'}>
               <div className='flex gap-2 items-center'>
                 <img src={nameImg} alt="/" className=' h-6' />
-                <label className='text-lg'>Name</label>
+                <label className='text-lg'>{user.name}</label>
               </div>
               <p className='text-lg'>{user.name}</p>
             </FormControl>
@@ -69,7 +69,7 @@ const UserModal = ({ children }) => {
                 <img src={addressImg} alt="/" className=' h-6' />
                 <label className='text-lg'>Address</label>
               </div>
-              <p className='text-lg'>awan colony</p>
+              <p className='text-lg'>{user.address}</p>
             </FormControl>
             <hr />
 
@@ -78,7 +78,7 @@ const UserModal = ({ children }) => {
                 <img src={cnicImg} alt="/" className=' h-6' />
                 <label className='text-lg'>CNIC</label>
               </div>
-              <p className='text-lg'>7465456</p>
+              <p className='text-lg'>{user.CNIC}</p>
             </FormControl>
             <hr />
 
@@ -87,7 +87,7 @@ const UserModal = ({ children }) => {
                 <img src={contactImg} alt="/" className=' h-6' />
                 <label className='text-lg'>Contact</label>
               </div>
-              <p className='text-lg'>03765767889</p>
+              <p className='text-lg'>{user.phoneNumber}</p>
             </FormControl>
             <hr />
 

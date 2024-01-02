@@ -22,13 +22,13 @@ const SiderBar = () => {
                 <div className='d-flex flex-column siderbargap'>
                     <SidebarItem icon="./image/deshboard.png" text="Dashboard" path="/admin" showText={showText} />
                     <SidebarItem icon="./image/user.png" text="Create User" path="/CreateUser" showText={showText} />
-                    {/* <SidebarItem icon="./image/carsdetial.png" text="Create Vehicle" path="./Deshboard.jsx" showText={showText} /> */}
+                    <SidebarItem icon="./image/users-solid.svg" text="Users Detail" path="/AssignVehicle" showText={showText} />
                     <SidebarItem icon="./image/avaiblecars.png" text="Vehicle Detial" path="/VehicleDetial" showText={showText} />
                     {/* <SidebarItem icon="./image/feulrecord.png" text="View fueling record" path="/Dashboard" showText={showText} /> */}
                     {/* <SidebarItem icon="./image/histroy.png" text="User History" path="/Dashboard" showText={showText} /> */}
                 </div>
             </div>
-            <SidebarItem icon="./image/logout.png" text="Logout" path="/logout" showText={showText} />
+            <SidebarItem icon="./image/logout.png" text="Logout" path="/" showText={showText}/>
         </div>
     );
 }

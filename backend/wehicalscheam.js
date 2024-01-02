@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const wehicalSchema = new mongoose.Schema({
-  vehicleName: {
-    type: String,
-    required: true,
-  },
+  // vehicleName: {
+    // type: String,
+    // required: true,
+  // },
   vehicleType: {
     type: String,
     required: true,

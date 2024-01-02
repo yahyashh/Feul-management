@@ -51,7 +51,7 @@ const UserPage = () => {
         <div className='flex items-center gap-3 pr-5'>
           <img src={historyImg} alt="/" className='w-7 h-7' onClick={() => history.push("/Userhistory")} />
           <UserModal>
-            <img src={image} alt="" className='rounded-full w-8 h-8' />
+            <img src={`http://localhost:5000/uploads/${user.image}`} alt="" className='rounded-full w-8 h-8' />
           </UserModal>
         </div>
       </nav>

@@ -9,6 +9,7 @@ import CreateUser from "./Components/Admin/CreateUser";
 import UserDetial from "./Components/Admin/UserDetial";
 import VehicleDetail from "./Components/Admin/VehicleDetial";
 import Assigncar from "./Components/Admin/Assigncar";
+import AssignVehicle from "./Components/Admin/AssignVehicle";
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
       <Route path="/UserDetial" component={UserDetial} />
 
       <Route path="/VehicleDetial" component={VehicleDetail} />
+      
+      <Route path="/AssignVehicle" component={AssignVehicle} />
+
 
 
     </div>

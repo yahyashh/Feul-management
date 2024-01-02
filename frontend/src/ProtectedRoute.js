@@ -5,12 +5,12 @@ import { useHistory } from 'react-router-dom'
 
 const ProtectedRoute = ({component: Component, ...rest}) => {
   const {isLogin, setIsLogin} = FuelState()
-  const history = useHistory()
 
   return <Route {...rest} render={(props)=>{
     if(isLogin) {
         return <Component/>
-    }else{
+    }
+    if(!isLogin){
       return(
         <Redirect to={{pathname: "/", state:{from: props.location}}}/>
       )

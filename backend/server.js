@@ -280,8 +280,9 @@ app.delete('/api/use/:id', async (req, res) => {
 // this is the api for the assign wehical 
 
 app.post('/api/assignwehical/:userId', async (req, res) => {
-  const { vehicleName, vehicleType, plateNumber } = req.body;
+  const { vehicleType, plateNumber } = req.body;
   const userId = req.params.userId;
+  console.log(req.body);
 console.log(userId);
   try {
     // Check if the user exists
@@ -292,7 +293,6 @@ console.log(userId);
 
     // Create a new wehical
     const newWehical = new Wehical({
-      vehicleName,
       vehicleType,
       plateNumber,
       // ... other wehical fields
@@ -460,7 +460,20 @@ console.log(req.body);
   }
 });
 
+app.get('/fuel-history', async (req, res) => {
+  try {
+    const fuelHistory = await FuelingDetail.find()
+      .populate('user')
+      .populate('wehical');
+
+    res.json(fuelHistory);
+  } catch (error) {
+    console.error('Error fetching fuel history:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+

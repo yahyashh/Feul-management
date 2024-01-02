@@ -5,9 +5,12 @@ import historyicon from "../../assets/pictures/historyicon.svg";
 import profileimage from "../../assets/pictures/profilepic.svg";
 import uploadicon from "../../assets/pictures/uploadicon.svg";
 import axios from "axios";
+import { useHistory } from 'react-router-dom'
+import UserModal from "../../Components/Userpages/UserModal";
 
 export default function Uploadimage() {
   const YourFormComponent = () => {
+    const history = useHistory()
     const [selectedFile, setSelectedFile] = useState(null);
     const userId = new URLSearchParams(window.location.search).get('userId');
     const wehicalId = new URLSearchParams(window.location.search).get('wehicalId');
@@ -53,9 +56,10 @@ export default function Uploadimage() {
       data.append("image", selectedFile)
 
       try {
-
         await axios.post(`http://localhost:5000/api/fueling/add-fueling/${userId}`, data);
         console.log('Fueling data submitted successfully', data);
+        alert("data successfully submitted")
+        history.push("/user")
       } catch (error) {
         console.error('Error submitting fueling data:', error.message);
       }
@@ -74,10 +78,12 @@ export default function Uploadimage() {
             </div>
             <div className="profileimg">
               <div>
-                <img src={historyicon} alt="historyicon" />
+                <img src={historyicon} alt="historyicon" onClick={() => history.push("/UserHistory")}/>
               </div>
               <div>
+                <UserModal>
                 <img src={profileimage} alt="profileimage" />
+                </UserModal>
               </div>
             </div>
           </div>

@@ -5,35 +5,22 @@ import { useHistory } from 'react-router-dom'
 
 const DataTable = () => {
   // Sample data
-  const data = [
-    { id: 1, name: 'John Doe', vehicle: 'Car', time: '10:00 AM', usage: 'Daily', volume: '5L', cost: '$10' },
-    { id: 2, name: 'Jane Smith', vehicle: 'Bike', time: '02:30 PM', usage: 'Weekly', volume: '2L', cost: '$7' },
-    { id: 2, name: 'Bonds', vehicle: 'Bike', time: '00:30 PM', usage: 'Weekly', volume: '4L', cost: '$17' },
-    { id: 2, name: 'Smith', vehicle: 'cycle', time: '02:00 PM', usage: 'Monday', volume: '3L', cost: '$40' },
-    { id: 2, name: 'Babar Azam', vehicle: 'Reshkwa', time: '06:10 PM', usage: 'Thuesday ', volume: '89L', cost: '$23' },
-    { id: 2, name: 'shadab', vehicle: 'Suzuike', time: '03:55 PM', usage: 'Friday', volume: '9L', cost: '$45' },
-    { id: 2, name: 'Kohli', vehicle: 'Mahran', time: '08:10 PM', usage: 'Weekly', volume: '10L', cost: '$34' },
-    { id: 2, name: 'Kohli', vehicle: 'Mahran', time: '08:10 PM', usage: 'Weekly', volume: '10L', cost: '$34' },
-    { id: 2, name: 'Kohli', vehicle: 'Mahran', time: '08:10 PM', usage: 'Weekly', volume: '10L', cost: '$34' },
-    { id: 2, name: 'Kohli', vehicle: 'Mahran', time: '08:10 PM', usage: 'Weekly', volume: '10L', cost: '$34' },
-    { id: 2, name: 'Kohli', vehicle: 'Mahran', time: '08:10 PM', usage: 'Weekly', volume: '10L', cost: '$34' },
-    // Add more data as needed
-  ];
   const [users, setUsers] = useState([]);
   const history = useHistory()
+  const [fuelHistory, setFuelHistory] = useState([]);
 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchFuelHistory = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/users-with-wehical');
+        const response = await axios.get('http://localhost:5000/fuel-history');
         console.log(response.data);
-        setUsers(response.data);
+        setFuelHistory(response.data);
       } catch (error) {
-        console.error('Error fetching users with wehical data:', error.message);
+        console.error('Error fetching fuel history:', error.message);
       }
     };
 
-    fetchUsers();
+    fetchFuelHistory();
   }, []);
 
   const deleteWehicalFromUser = async (userId) => {
@@ -51,7 +38,7 @@ const DataTable = () => {
     <div className="container deshboard ">
       <div className="row justify-content-center  widthtable overflow-scroll  ">
         <div className="col-md-12">
-          <table className="table table-hover text-start  table-container ">
+          <table className="table table-hover text-start  table-container " style={{height:"40px"}}>
             <thead>
               <tr>
                 <th scope="col">name</th>
@@ -63,14 +50,18 @@ const DataTable = () => {
               </tr>
             </thead>
             <tbody>
-              {data.map(item => (
-                <tr key={item.id}>
-                  <td>{item.name}</td>
-                  <td>{item.vehicle}</td>
-                  <td>{item.time}</td>
-                  <td>{item.usage}</td>
-                  <td>{item.volume}</td>
-                  <td>{item.cost}</td>
+              {fuelHistory.map(item => (
+                <tr key={item.id} onClick={() => history.push(`/UserDetial?userId=${item.user._id}`)}>
+                  {item.user && (
+                   <>
+                   <td>{item.user.name}</td>
+                   <td>{item.wehical.plateNumber}</td>
+                   <td>{item.location}</td>
+                   <td>{item.stationName}</td>
+                   <td>{item.pricePerLiter}</td>
+                   <td>{item.totalPrice}</td>                 
+                   </> 
+)}
                 </tr>
               ))}
             </tbody>

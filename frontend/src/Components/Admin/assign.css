@@ -6,6 +6,10 @@
 
 }
 
+.updeladd{
+    display: flex;
+}
+
 .updeladd img {
     margin-right: 2px;
     width: 20px;
@@ -32,9 +36,6 @@
     margin-right: 5px;
 }
 
-.pd {
-    padding-top: 1.3rem !important;
-}
 
 .h2vehicledetial {
     font-size: 1.3rem;

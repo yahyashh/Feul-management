@@ -4,20 +4,6 @@ import "./assign.css"
 import axios from "axios"
 import { useHistory } from 'react-router-dom'
 
-const data = [
-    { id: 1, Vehiclename: 'Honda', assignedname: 'furkan', vehicletype: 'Honda', numberplate: '4325d', actions: "Active" },
-    { id: 2, Vehiclename: 'suzike', assignedname: 'Zurdan', vehicletype: 'suzike', numberplate: 'W9834', actions: "Active" },
-    { id: 2, Vehiclename: 'bus', assignedname: 'Zubir', vehicletype: 'bus', numberplate: 'M3457', actions: "Active" },
-    { id: 2, Vehiclename: 'van Azam', assignedname: 'Ahmmad', vehicletype: 'van', numberplate: 'T79834 ', actions: "Active" },
-    { id: 2, Vehiclename: 'Bus', assignedname: 'Yahya', vehicletype: 'Bus', numberplate: 'F43554', actions: "Active" },
-    { id: 2, Vehiclename: 'truck', assignedname: 'Anas ', vehicletype: 'truck', numberplate: 'W4353', actions: "noActive" },
-    { id: 2, Vehiclename: 'Hondx', assignedname: 'Saood', vehicletype: 'Hondx', numberplate: 'k54665', actions: "Active" },
-    { id: 2, Vehiclename: 'Tesle', assignedname: 'daivd', vehicletype: 'Tesle X ', numberplate: 'z8654', actions: "Active" },
-    { id: 2, Vehiclename: 'Ferrir', assignedname: 'admin', vehicletype: 'Ferrir ', numberplate: 'Q4563', actions: "Active" },
-    { id: 2, Vehiclename: 'lamborghini', assignedname: 'admin', vehicletype: 'lamborghini', numberplate: 'W5361', actions: "noActive" },
-    { id: 2, Vehiclename: 'Toyata', assignedname: 'gmail.', vehicletype: 'Toyata', numberplate: 'h34523', actions: "Active" },
-    // Add more data as needed
-];
 
 function AssignVehicle() {
     const [users, setUsers] = useState([]);

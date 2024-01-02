@@ -48,7 +48,7 @@ function AssignVehicleTable({ user, setUser, deleteUser, AssignVeh }) {
     return (
         <div className="d-flex flex-column w-100  gap-4 p-4 responsivemargin vh-100">
             <div className="d-flex  justify-content-between align-items-center me-5 m-lg-0 m-md-0  ">
-                <h5 className=''>feuling Record</h5>
+                <h5 className=''>User Detail</h5>
                 <button className='backbtn'><img src="./image/arrow.png" alt="" className='arrow' />Back</button>
             </div>
             <div className="d-flex justify-content-end align-items-center w-100 seainp">
@@ -76,7 +76,7 @@ function TableAssign({ user, setUser, deleteUser, AssignVeh }) {
                     <tbody>
                         {user.map((item, index) => (
                             <tr key={index}>
-                                <td className='d-flex'><Link to={"/UserDetial"}><img src="https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg" alt="" className='data-image me-3' /></Link>{item.name}</td>
+                                <td className='d-flex'><><img src={`http://localhost:5000/uploads/${item.image}`} alt={item.name} className='data-image me-3' /></>{item.name}</td>
                                 <td className='pd'>{item.email}</td>
                                 <td className='pd'>{item.phoneNumber}</td>
                                 <td className='pd'>{item.address}</td>

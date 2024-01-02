@@ -1,33 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import './userdetial.css'
 import axios from "axios"
-
-const data = [
-    { id: 1, date: '23 jan 2023', feulliter: '13Liter', cost: '134546642', stations: 'Pak station' },
-    { id: 2, date: '23 jan 2023', feulliter: '13Liter', cost: '2000', stations: 'shell', },
-    { id: 2, date: '23 jan 2023', feulliter: '13Liter', cost: '2000', stations: 'kotat station', },
-    { id: 2, date: '23 jan 2023', feulliter: '13Liter', cost: '2000', stations: 'nation pump', },
-    { id: 2, date: '23 jan 2023', feulliter: '13Liter', cost: '2000', stations: 'free station', },
-    { id: 2, date: '22 feb 2023', feulliter: '13Liter', cost: '2000', stations: 'shell', },
-    { id: 2, date: '22 feb 2023', feulliter: '13Liter', cost: '2000', stations: 'shell', },
-    { id: 2, date: '23 jan 2023', feulliter: '13Liter', cost: '2000', stations: 'shell', },
-    { id: 2, date: '22 july 2023', feulliter: '13Liter', cost: '2000', stations: 'shell', },
-    { id: 2, date: '22 july 2023', feulliter: '13Liter', cost: '2000', stations: 'shell', },
-    { id: 2, date: '24 july 2023', feulliter: '13Liter', cost: '2000', stations: 'shell', },
-    { id: 2, date: '24 july 2023', feulliter: '13Liter', cost: '2000', stations: 'shell', },
-    { id: 2, date: '24 july 2023', feulliter: '13Liter', cost: '2000', stations: 'shell', },
-    // Add more data as needed
-];
+import { useHistory } from 'react-router-dom'
 
 
 function UserDetial() {
     const [error, setError] = useState()
     const [user, setUser] = useState([])
+    const history = useHistory()
     const userId = new URLSearchParams(window.location.search).get('userId');
 useEffect(() => {
     const fetchUserData = async (e) => {
       try {
         // Check if userId is available
+        console.log(userId);
         if (!userId) { 
           setError('User ID not provided');
           return;
@@ -56,10 +42,10 @@ useEffect(() => {
                     <h5 style={{ "color": "#116a7b" }} className='fw-bold'><img src='./image/clogo.png ' alt="" className='me-1' style={{ "width": "2rem" }} /> Fleeto Product</h5>
                 </div>
 
-                <button className='backbtn'><img src="./image/arrow.png" alt="" className='arrow' />Back</button>
+                <button className='backbtn' onClick={()=> history.push("/admin")}><img src="./image/arrow.png" alt="" className='arrow'/>Back</button>
             </div>
             <div className="usernameimage">
-                <h4 className='fw-bold m-0 '><img src="https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg" alt="" className='data-image me-3' />Tariq Masood Fueling Record</h4>
+                <h4 className='fw-bold m-0 '><img src={`http://localhost:5000/uploads/${user.image}`} alt="" className='data-image me-3' />{user.name}</h4>
             </div>
 
 
@@ -81,9 +67,9 @@ useEffect(() => {
                                 <tr key={item.id}>
 
                                     <td className='ps-3 pd'>{item.date}</td>
-                                    <td className='pd'>{item.feulliter}</td>
-                                    <td className='pd'>{item.cost}</td>
-                                    <td className='pd'>{item.stations}</td>
+                                    <td className='pd'>{item.totalLiters}</td>
+                                    <td className='pd'>{item.totalPrice}</td>
+                                    <td className='pd'>{item.stationName}</td>
                                     <tr>
                                     </tr>
                                 </tr>
@@ -99,28 +85,32 @@ useEffect(() => {
                     <>
                     
                         <div className="drivernameima ">
-                            <div className='d-flex flex-column'>
-                                <h5 className='fw-bold'><img src="https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg" alt="" className='data-image me-3' />Driver</h5>
+                            <div className='flex items-center'>
+                            <img src={`http://localhost:5000/uploads/${user.image}`} alt="" className='data-image me-2' />
+                                <h5 className='fw-bold'>Driver</h5>
                             </div>
-                            <p className='py-2'>{user.name}</p>
+                            <p className='py-2 font-bold'>{user.name}</p>
                         </div>
                         <div className="drivernameima ">
-                            <div className='d-flex flex-column'>
-                                <h5 className='fw-bold'><img src="./image/honda.png" alt="" className='data-image me-3' />Vehicle Assigned  </h5>
+                            <div className='flex items-center'>
+                            <img src="./image/honda.png" alt="" className='data-image me-2' />
+                                <h5 className='fw-bold'>Vehicle Assigned  </h5>
                             </div>
-                            <p className='py-2'>{user.wehical.plateNumber}</p>
+                            <p className='py-2 font-bold'>{user.wehical.plateNumber}</p>
                         </div>
                         <div className="drivernameima ">
-                            <div className='d-flex flex-column'>
-                                <h5 className='fw-bold'><img src="./image/calender.png" alt="" className='data-image me-3  rounded-0 ' />Assigned From</h5>
+                            <div className='flex items-center'>
+                            <img src="./image/calender.png" alt="" className='data-image me-2  rounded-0 ' />
+                                <h5 className='fw-bold'>Assigned From</h5>
                             </div>
                             <p className='py-2'>22 jul 2023 to 23 july 2022</p>
                         </div>
                         <div className="drivernameima ">
-                            <div className='d-flex flex-column'>
-                                <h5 className='fw-bold'><img src="./image/time.png" alt="" className='data-image me-3 rounded-0' />Time Period </h5>
+                            <div className='flex items-center'>
+                            <img src="./image/time.png" alt="" className='data-image me-2 rounded-0' />
+                                <h5 className='fw-bold'>Time Period </h5>
                             </div>
-                            <p className='py-2'>u{user.wehical.vehicleType}</p>
+                            <p className='py-2 font-bold'>{user.wehical.vehicleType}</p>
                         </div>
                     </>
                     ) : (

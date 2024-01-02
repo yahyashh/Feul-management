@@ -32,9 +32,6 @@ const Login = ({ login, setLogin }) => {
 
     try {
       const response = await axios.post('http://localhost:5000/api/login', loginData);
-      console.log("before login true", isLogin);
-      setIsLogin(true)
-      console.log("After login true", isLogin);
       console.log(response.data.user);
       console.log(response.data.user.isAdmin);
 
@@ -47,6 +44,10 @@ const Login = ({ login, setLogin }) => {
       // Store the token and user data in localStorage or wherever needed
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
+
+      console.log("before login true", isLogin);
+      setIsLogin(true)
+      console.log("After login true", isLogin);
 
       // Log the token and user data to the console
       console.log('Token:', token);

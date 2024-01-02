@@ -17,6 +17,7 @@ function Assigncar() {
   const handleAssignWehical = async (e) => {
     e.preventDefault();
     try {
+      console.log(userId);
       // Send a request to your backend API to assign the wehical
       await fetch(`http://localhost:5000/api/assignwehical/${userId}`, {
         method: 'POST',
@@ -25,9 +26,9 @@ function Assigncar() {
         },
         body: JSON.stringify(wehicalData),
       });
-      // alert("assign successfull");
-      // // Navigate back to the user list or any other route
-      // history.push('/admin');
+      alert("assign successfull");
+      // Navigate back to the user list or any other route
+      history.push('/admin');
     } catch (error) {
       console.error('Error assigning wehical:', error.message);
     }

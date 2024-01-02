@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './createuser.css'
 import AssignVehicle from './AssignVehicle'
 import axios from 'axios'
+import { useHistory } from 'react-router-dom'
 
 function CreateUser() {
     const [submite, setSubmate] = useState(true)
@@ -13,6 +14,7 @@ function CreateUser() {
         image: null,
         isAdmin: 'client', // Set the default value for isAdmin
     });
+    const history = useHistory();
 
     const handleInputChange = (e) => {
         setFormData({
@@ -30,7 +32,6 @@ function CreateUser() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setSubmate(!submite);
 
         const data = new FormData();
         data.append('name', formData.name);
@@ -46,7 +47,7 @@ function CreateUser() {
             await axios.post('http://localhost:5000/api/create', data);
             console.log('User created successfully', data);
             alert('success');
-
+            history.push("/AssignVehicle")
         } catch (error) {
             console.error('Error creating user:', error.message);
         }

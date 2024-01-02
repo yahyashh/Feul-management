@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 const FuelContext = createContext();
 
 const FuelProvider = ({ children }) => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(false)
   const [user, setUser] = useState([]);
   const history = useHistory()
 
